@@ -1,0 +1,30 @@
+{
+  "name": "challenge-api",
+  "version": "1.0.0",
+  "description": "Welcome to our API coding challenge. In this exercise, you'll create an URL-shortener API.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hudello/challenge-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hudello/challenge-api/issues"
+  },
+  "homepage": "https://github.com/Hudello/challenge-api#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.0",
+    "shortid": "^2.2.16"
+  }
+}
