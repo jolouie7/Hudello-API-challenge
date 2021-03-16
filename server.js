@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const { nanoid } = require("nanoid");
 
 const Url = require("./models/urls");
+const { request } = require("express");
 
 require("dotenv").config();
 
@@ -42,8 +43,17 @@ app.post("/", async (req, res) => {
   const slug = nanoid()
   const url = await Url.findOne({longUrl: longUrl});
   if (url) {
-    console.log("This url was already created")
-    // inc requestCount
+    console.log("This url was already created");
+
+    Url.findById(url._id, function (err, url) {
+      if (err) {
+        console.error(err.message);
+        return res.status(500).json("Error: " + err.message);
+      }
+      url.update({ $inc: { requestCount: 1 } }, {new: true}).exec();
+    })
+    res.json(url);
+    throw Error("Error: ", Error);
   } else {
     // create new shortURL
     const newUrl = await Url.create({
@@ -52,7 +62,7 @@ app.post("/", async (req, res) => {
       shortUrl: `http://localhost:5000/${slug}`, // Replace with domain
       requestCount: 0, // Inc the requestCount after initializing
     });
-    res.json({newUrl: newUrl});
+    res.json(newUrl);
   }
 });
 
