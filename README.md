@@ -1,5 +1,7 @@
 # Hudello Coding Challenge: API
 
+### Instructions
+
 Welcome to our API coding challenge. In this exercise, you'll create an URL-shortener API.
 
 Given any URL input via `POST`, your API should return a JSON with the following properties:
@@ -22,4 +24,44 @@ To get started:
 Happy coding!
 
 Hudello Engineering
-# Hudello-API-challenge
+#### Installation
+Setup a MongoDB database:
+- Go here https://www.mongodb.com/ and follow the instructions on how to connect a database with your project.
+#### Clone project
+```
+git clone git@github.com:jolouie7/Hudello-API-challenge.gitx
+```
+
+#### Change into the project directory
+```
+cd Hudello-API-challenge
+```
+
+#### Open in your code editor
+```
+code .
+```
+
+#### Create an .ENV file
+```
+MONGODB_URI=YOUR_MONGODB_URI_HERE
+```
+
+#### Install dependencies
+```
+npm install
+```
+
+#### Run
+```
+npm run dev
+```
+
+Technologies Used:
+- MongoDB
+- Nodejs
+
+### Improvements
+- [ ] Add unit tests
+- [ ] Have a dedicated routes file when the project grows
+- [ ] Add validations
