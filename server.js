@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const shortid = require("shortid");
+const { nanoid } = require("nanoid");
 
 const Url = require("./models/urls");
 
@@ -33,6 +33,28 @@ app.get("/", async (req, res) => {
   const urls = await Url.find()
   res.json(urls)
 })
+
+// User input longURL
+app.post("/", async (req, res) => {
+  // TODO: Check if the longUrl is acutally a valid URL
+  // Check if the longUrl is already in the db, if it is do something. If not create a new shortUrl
+  const longUrl = req.body.longUrl;
+  const slug = nanoid()
+  const url = await Url.findOne({longUrl: longUrl});
+  if (url) {
+    console.log("This url was already created")
+    // inc requestCount
+  } else {
+    // create new shortURL
+    const newUrl = await Url.create({
+      slug: slug,
+      longUrl: longUrl,
+      shortUrl: `http://localhost:5000/${slug}`, // Replace with domain
+      requestCount: 0, // Inc the requestCount after initializing
+    });
+    res.json({newUrl: newUrl});
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
