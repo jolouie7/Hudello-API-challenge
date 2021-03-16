@@ -2,9 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const { nanoid } = require("nanoid");
-
+// Models
 const Url = require("./models/urls");
-const { request } = require("express");
 
 require("dotenv").config();
 
