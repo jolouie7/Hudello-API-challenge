@@ -42,8 +42,6 @@ app.post("/", async (req, res) => {
   const slug = nanoid()
   const url = await Url.findOne({longUrl: longUrl});
   if (url) {
-    console.log("This url was already created");
-
     Url.findById(url._id, function (err, url) {
       if (err) {
         console.error(err.message);
